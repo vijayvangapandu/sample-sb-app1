@@ -276,9 +276,9 @@
 	</build>
 
 	<scm>
-		<connection>scm:git:git@github.com:vijayvangapandu/nventory-graph.git</connection>
-		<url>git@github.com/vijayvangapandu/nventory-graph.git</url>
-		<developerConnection>scm:git:git@github.com:vijayvangapandu/nventory-graph.git</developerConnection>
+		<connection>scm:git:git@github.com:vijayvangapandu/sample-sb-app1.git.git</connection>
+		<url>git@github.com/vijayvangapandu/sample-sb-app1.git.git</url>
+		<developerConnection>scm:git:git@github.com:vijayvangapandu/sample-sb-app1.git.git</developerConnection>
 	  <tag>HEAD</tag>
   </scm>
 

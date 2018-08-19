@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sampleweb
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sampleweb
+        tier: backend
+    spec:
+      containers:
+      - name: samplewebapp
+        image: localhost:5000/samplewebapp:1.0-SNAPSHOT
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 8080

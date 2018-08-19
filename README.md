@@ -1,1 +1,1 @@
-# sample-sb-app1
+# Sample webapplication

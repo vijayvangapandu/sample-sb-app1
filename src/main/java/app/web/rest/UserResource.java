@@ -1,10 +1,10 @@
 package app.web.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.AsyncResponse;
@@ -16,7 +16,8 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import app.web.dto.User;
+import app.web.dao.model.User;
+import app.web.dto.UserDto;
 import app.web.service.UserDataRequest;
 
 @Component
@@ -25,26 +26,6 @@ public class UserResource {
 
 	@Autowired
 	private UserResourceRequestHandler requestHandler;
-	
-	/*@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<User> getAllUsers(@Suspended final AsyncResponse asyncResponse,
-			final @Context HttpHeaders headers,
-			@QueryParam("pageNumber") final Integer pageNumber, 
-			@QueryParam("pageSize") final Integer pageSize, 
-			@QueryParam("dateSince") final Long dateSince) {
-		
-		List<User> users = new ArrayList<>();
-		
-		UserDataRequest request = new UserDataRequest();
-		request.setDateSince(dateSince);
-		request.setPageNumber(pageNumber);
-		request.setPageSize(pageSize);
-		
-		requestHandler.
-		return users;
-		
-	}*/
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -60,6 +41,24 @@ public class UserResource {
 		request.setPageSize(pageSize);
 		
 		requestHandler.handleGetUserRequest(request, asyncResponse);
+		
+	}
+	
+	@GET
+	@Path("/{userId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public UserDto getUser(final @Context HttpHeaders headers,
+			@PathParam("userId") final String userId) {
+		
+		return requestHandler.getUser(userId);
+		
+	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public User saveUser(final @Context HttpHeaders headers, User user) {
+		return requestHandler.saveUser(user);
 		
 	}
 }

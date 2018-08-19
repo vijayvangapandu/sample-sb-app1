@@ -3,7 +3,7 @@ package app.web.service;
 import java.util.List;
 import java.util.Optional;
 
-import app.web.dto.User;
+import app.web.dao.model.User;
 
 public class UserDataRequest {
 

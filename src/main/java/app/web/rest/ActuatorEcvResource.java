@@ -26,10 +26,6 @@ public class ActuatorEcvResource {
     
     @Inject HealthEndpoint healthEndpoint;
     
-    /**
-     * Returns a simple string result for server status that is consistent with current eHarmony usage.
-     * @return "SERVER UP" or "SERVER DOWN" and appropriate return code
-     */
     @GET
     public Response ecv() {
         Health health = healthEndpoint.invoke();

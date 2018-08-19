@@ -6,13 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
 
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"app.web"})
+
 @EnableMetrics
-@ComponentScan(basePackages = { "app.web" })
 @EnableAutoConfiguration(exclude = { ErrorMvcAutoConfiguration.class })
 public class SampleWebServiceApplication extends SpringBootServletInitializer {
 

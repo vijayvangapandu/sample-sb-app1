@@ -10,8 +10,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import app.web.dao.model.User;
 import app.web.dto.UserDto;
+import app.web.repository.model.User;
 import app.web.rx.ExecutorServiceProvider;
 import app.web.service.UserDataRequest;
 import app.web.service.UserService;
@@ -55,9 +55,12 @@ public class UserResourceRequestHandler {
 		return userDataRequest;
 	};
 	
-	public UserDto getUser(String userId) {
-		User user =  userService.getUser(userId);
-		return userTransformer.buildUserDto(user);
+	public UserDto getUserDto(String userId) {
+		return  userService.getUserDto(userId);
+	}
+	
+	public User getUser(String userId) {
+		return userService.getUser(userId);
 	}
 	
 	public User saveUser(User user) {

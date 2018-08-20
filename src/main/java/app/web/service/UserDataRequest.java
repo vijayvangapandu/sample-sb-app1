@@ -1,9 +1,10 @@
 package app.web.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import app.web.dao.model.User;
+import app.web.repository.model.User;
 
 public class UserDataRequest {
 
@@ -11,6 +12,11 @@ public class UserDataRequest {
 	private Optional<Integer> pageSize;
 	private Optional<Long> dateSince;
 	private Optional<Long> userId;
+	private Optional<Integer> gender;
+	private Optional<Integer> age;
+	
+	private LocalDateTime createdSince;
+	
 	private List<User> users;
 	
 	public Optional<Integer> getPageNumber() {
@@ -60,7 +66,27 @@ public class UserDataRequest {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+	public Optional<Integer> getGender() {
+		return gender;
+	}
+	public void setGender(Optional<Integer> gender) {
+		this.gender = gender;
+	}
+	public Optional<Integer> getAge() {
+		return age;
+	}
+	public void setAge(Optional<Integer> age) {
+		this.age = age;
+	}
+	public LocalDateTime getCreatedSince() {
+		return createdSince;
+	}
+	public void setCreatedSince(LocalDateTime createdSince) {
+		this.createdSince = createdSince;
+	}
 	
-	
+	public void setGender(Integer gender) {
+		this.gender = Optional.ofNullable(gender);
+	}
 	
 }

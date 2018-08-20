@@ -15,7 +15,7 @@ import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 
 @EnableMetrics
 @EnableAutoConfiguration(exclude = { ErrorMvcAutoConfiguration.class, EmbeddedMongoAutoConfiguration.class })
-@EnableMongoRepositories(basePackages="app.web.dao.repository")
+@EnableMongoRepositories(basePackages="app.web.repository")
 public class SampleWebServiceApplication extends SpringBootServletInitializer {
 
 	@Override

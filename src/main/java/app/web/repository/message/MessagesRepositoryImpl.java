@@ -1,4 +1,4 @@
-package app.web.dao.repository.message;
+package app.web.repository.message;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
@@ -18,8 +18,8 @@ import org.springframework.util.CollectionUtils;
 import com.codahale.metrics.annotation.Timed;
 import com.mongodb.WriteResult;
 
-import app.web.dao.model.BaseMessage;
-import app.web.dao.repository.BaseRepository;
+import app.web.repository.BaseRepository;
+import app.web.repository.model.BaseMessage;
 
 @Service
 public class MessagesRepositoryImpl extends BaseRepository implements BaseMessagesRepository {

@@ -1,5 +1,5 @@
 
-package app.web.dao.model;
+package app.web.repository.model;
 
 import org.springframework.data.mongodb.core.mapping.Field;
 

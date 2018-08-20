@@ -1,10 +1,10 @@
 
-package app.web.dao.repository.message;
+package app.web.repository.message;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import app.web.dao.model.BaseMessage;
+import app.web.repository.model.BaseMessage;
 
 public interface BaseMessagesRepository {
 

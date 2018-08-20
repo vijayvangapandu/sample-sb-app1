@@ -1,5 +1,7 @@
 package app.web.rest;
 
+import java.util.Optional;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,8 +18,8 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import app.web.dao.model.User;
 import app.web.dto.UserDto;
+import app.web.repository.model.User;
 import app.web.service.UserDataRequest;
 
 @Component
@@ -33,12 +35,14 @@ public class UserResource {
 			final @Context HttpHeaders headers,
 			@QueryParam("pageNumber") final Integer pageNumber, 
 			@QueryParam("pageSize") final Integer pageSize, 
-			@QueryParam("dateSince") final Long dateSince) {
+			@QueryParam("dateSince") final Long dateSince,
+			@QueryParam("gender") final Integer gender) {
 		
 		UserDataRequest request = new UserDataRequest();
 		request.setDateSince(dateSince);
 		request.setPageNumber(pageNumber);
 		request.setPageSize(pageSize);
+		request.setGender(gender);
 		
 		requestHandler.handleGetUserRequest(request, asyncResponse);
 		
@@ -47,10 +51,20 @@ public class UserResource {
 	@GET
 	@Path("/{userId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public UserDto getUser(final @Context HttpHeaders headers,
+	public User getUser(final @Context HttpHeaders headers,
 			@PathParam("userId") final String userId) {
 		
 		return requestHandler.getUser(userId);
+		
+	}
+	
+	@GET
+	@Path("/public/{userId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public UserDto getUserDto(final @Context HttpHeaders headers,
+			@PathParam("userId") final String userId) {
+		
+		return requestHandler.getUserDto(userId);
 		
 	}
 	

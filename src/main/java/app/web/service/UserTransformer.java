@@ -2,12 +2,11 @@ package app.web.service;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Calendar;
 
 import org.springframework.stereotype.Service;
 
-import app.web.dao.model.User;
 import app.web.dto.UserDto;
+import app.web.repository.model.User;
 
 @Service
 public class UserTransformer {
@@ -26,12 +25,10 @@ public class UserTransformer {
 	}
 
 	private int calculateAge(User user) {
-		Calendar cal = Calendar.getInstance();
-		cal.setTimeInMillis(user.getBirthDate());
-		LocalDate birthLocalDate = LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
-				cal.get(Calendar.DATE));
-		int age = Period.between(birthLocalDate, LocalDate.now()).getYears();
-
+		int age = 0;
+		if(user.getUserBirthDate() != null) {
+			age = Period.between(user.getUserBirthDate().toLocalDate(), LocalDate.now()).getYears();
+		}
 		return age;
 	}
 

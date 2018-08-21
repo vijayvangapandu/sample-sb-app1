@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 
 @SpringBootApplication(scanBasePackages = {"app.web"})
-
 @EnableMetrics
 @EnableAutoConfiguration(exclude = { ErrorMvcAutoConfiguration.class, EmbeddedMongoAutoConfiguration.class })
 @EnableMongoRepositories(basePackages="app.web.repository")

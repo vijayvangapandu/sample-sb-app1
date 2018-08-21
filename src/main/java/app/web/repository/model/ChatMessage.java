@@ -3,7 +3,7 @@ package app.web.repository.model;
 
 import org.springframework.data.mongodb.core.mapping.Field;
 
-public class ChatMessage extends BaseMessage {
+public class ChatMessage extends BaseMessage<String> {
 
 	public ChatMessage() {
 		super(1);
@@ -12,6 +12,7 @@ public class ChatMessage extends BaseMessage {
 	@Field(value = VALUE)
 	private String value;
 
+	@Override
 	public String getValue() {
 		return value;
 	}

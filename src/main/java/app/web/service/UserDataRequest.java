@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import app.web.repository.model.User;
+import app.web.dto.UserDto;
 
 public class UserDataRequest {
 
@@ -17,7 +17,7 @@ public class UserDataRequest {
 	
 	private LocalDateTime createdSince;
 	
-	private List<User> users;
+	private List<UserDto> users;
 	
 	public Optional<Integer> getPageNumber() {
 		return pageNumber;
@@ -60,10 +60,11 @@ public class UserDataRequest {
 	public void setPageNumber(Optional<Integer> pageNumber) {
 		this.pageNumber = pageNumber;
 	}
-	public List<User> getUsers() {
+	
+	public List<UserDto> getUsers() {
 		return users;
 	}
-	public void setUsers(List<User> users) {
+	public void setUsers(List<UserDto> users) {
 		this.users = users;
 	}
 	public Optional<Integer> getGender() {

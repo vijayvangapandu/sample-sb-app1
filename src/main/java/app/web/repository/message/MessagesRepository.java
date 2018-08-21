@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import app.web.repository.model.BaseMessage;
 
 @Repository
-public interface MessagesRepository extends MongoRepository<BaseMessage, String>, BaseMessagesRepository  {
+public interface MessagesRepository extends MongoRepository<BaseMessage<?>, String>, BaseMessagesRepository  {
 	
 }

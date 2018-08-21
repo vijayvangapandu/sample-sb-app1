@@ -1,7 +1,5 @@
 package app.web.rest;
 
-import java.util.Optional;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,12 +16,11 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import app.web.dto.UserDto;
 import app.web.repository.model.User;
 import app.web.service.UserDataRequest;
 
 @Component
-@Path("/users")
+@Path("/v1/users")
 public class UserResource {
 
 	@Autowired
@@ -43,7 +40,6 @@ public class UserResource {
 		request.setPageNumber(pageNumber);
 		request.setPageSize(pageSize);
 		request.setGender(gender);
-		
 		requestHandler.handleGetUserRequest(request, asyncResponse);
 		
 	}
@@ -58,21 +54,13 @@ public class UserResource {
 		
 	}
 	
-	@GET
-	@Path("/public/{userId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public UserDto getUserDto(final @Context HttpHeaders headers,
-			@PathParam("userId") final String userId) {
-		
-		return requestHandler.getUserDto(userId);
-		
-	}
-	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public User saveUser(final @Context HttpHeaders headers, User user) {
+	public User createUser(final @Context HttpHeaders headers, User user) {
+		//handle birthdate
 		return requestHandler.saveUser(user);
-		
 	}
+	
+	//TODO - Create PUT request for location and other fields update
 }

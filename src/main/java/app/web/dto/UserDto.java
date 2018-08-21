@@ -6,6 +6,7 @@ public class UserDto {
 	private String name;
 	private int gender;
 	private int age;
+	private String about;
 	
 	public String getName() {
 		return name;
@@ -34,4 +35,11 @@ public class UserDto {
 	public int getAge() {
 		return age;
 	}
+	public String getAbout() {
+		return about;
+	}
+	public void setAbout(String about) {
+		this.about = about;
+	}
+	
 }
